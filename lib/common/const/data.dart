@@ -11,4 +11,5 @@ final simulatorIp = '127.0.0.1:3000';
 
 final ip = Platform.isIOS ? simulatorIp : emulatorIp;
 
-final storage = FlutterSecureStorage();
+// * flutter riverpod 사용해서 storage 생성하므로 삭제
+// final storage = FlutterSecureStorage();
