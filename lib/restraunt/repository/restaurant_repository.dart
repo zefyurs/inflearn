@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:inflearn/common/const/data.dart';
 import 'package:inflearn/common/dio/dio.dart';
 import 'package:inflearn/common/model/cursor_pagination_model.dart';
+import 'package:inflearn/common/model/pagination_params.dart';
 import 'package:inflearn/restraunt/model/restaurant_model.dart';
 import 'package:inflearn/restraunt/model/restraurant_detail_model.dart';
 import 'package:retrofit/retrofit.dart';
@@ -26,7 +27,10 @@ abstract class RestaurantRepository {
     'accessToken': 'true',
   })
   @GET('/')
-  Future<CursorPagination<RestaurantModel>> paginate();
+  Future<CursorPagination<RestaurantModel>> paginate({
+    // * @Queries() 를 붙여서 paginationParams를 query parameter로 사용한다.
+    @Queries() PaginationParams? paginationParams = const PaginationParams(),
+  });
 
   // http://$ip/restaurant/:id
   @GET('/{id}') // 요청타입
